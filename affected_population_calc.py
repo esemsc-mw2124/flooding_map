@@ -28,8 +28,8 @@ def calculate_affected_population_and_area(base_np, flood_np):
     total_max = 0
     flood_pixel_count = 0
  
-    for y in range(height):
-        for x in range(width):
+    for y in range(height-1):
+        for x in range(width-1):
             if is_flood_red(flood_np[y, x]):
                 flood_pixel_count += 1
                 base_pixel = tuple(base_np[y, x].tolist())
