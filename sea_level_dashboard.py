@@ -129,11 +129,6 @@ if mode == "Scenario":
     The affected area is calculated based on a model by [Climate Central](https://coastal.climatecentral.org/map/8/100.6166/13.2746/?theme=water_level&map_type=water_level_above_mhhw&basemap=roadmap&contiguous=true&elevation_model=best_available&refresh=true&water_level=1.0&water_unit=m).
     The population for a given year is based on a model we developped (see relevant notebook for more details). The data we used is from [Landscan](https://landscan.ornl.gov/), which provides high-resolution population data.
     """)
-if mode == "Custom":
-    st.markdown(f"### Viewing Flood Map for {sea_level:.1f}m Sea Level Rise in {year}")
-if mode == "Scenario":
-    st.markdown(f"### For scenario {scenario} we predict {sea_level:.1f}m Sea Level Rise by {year}")
-st_data = st_folium(m, width=700, height=500)
 
 total_min, total_max, affected_area_km2 = compute_affected_population_and_area_for_given_year_and_sea_level(year, sea_level)
 st.markdown(
@@ -144,3 +139,10 @@ st.markdown(
 - **Minimum affected population:** {total_min:,} people  
 - **Maximum affected population:** {total_max:,} people
 """)
+
+if mode == "Custom":
+    st.markdown(f"### Viewing Flood Map for {sea_level:.1f}m Sea Level Rise in {year}")
+if mode == "Scenario":
+    st.markdown(f"### For scenario {scenario} we predict {sea_level:.1f}m Sea Level Rise by {year}")
+st_data = st_folium(m, width=700, height=500)
+
